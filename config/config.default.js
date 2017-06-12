@@ -11,12 +11,22 @@ module.exports = appInfo => {
   config.view = {
     defaultViewEngine: 'nunjucks',
     mapping: {
-      '.tpl': 'nunjucks',    
+      '.tpl': 'nunjucks',
     },
-  }
+  };
   config.news = {
-    pageSize: 5,
+    pageSize: 30,
     serverUrl: 'https://hacker-news.firebaseio.com/v0',
   };
   return config;
+};
+// mount middleware
+exports.middleware = [
+  'robot',
+];
+// middleware config
+exports.robot = {
+  ua: [
+    /Baiduspider/i,
+  ],
 };
